@@ -26,6 +26,14 @@ export default function ProductPage( ) {
     if (id) fetchProduct();
   }, [id]);
 
+
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
+  
+
   if (!product) return <div className="p-10 text-center">Loading...</div>;
 
   return ( 

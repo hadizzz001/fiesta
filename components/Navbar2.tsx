@@ -32,7 +32,7 @@ export default function NavBar() {
           <nav className="hidden sm:flex flex-1 justify-end items-center gap-10 text-lg font-bold mr-5">
             <a href="/" className="myNavLi  ">Home</a>
             <a href="/about" className="myNavLi  ">About</a>
-            <a href="/services" className=" myNavLi  ">Services</a>
+            <a href="/#services1133" className=" myNavLi  ">Products</a>
             <a href="/contact" className="myNavLi  ">Contact Us</a>
           </nav>
 
@@ -60,7 +60,7 @@ export default function NavBar() {
             <nav className="flex flex-col items-center gap-6 mt-12 text-3xl font-bold">
               <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
               <a href="/about" onClick={() => setMenuOpen(false)}>About</a>
-              <a href="/services" onClick={() => setMenuOpen(false)}>Services</a>
+              <a href="/#services1133" onClick={() => setMenuOpen(false)}>Products</a>
               <a href="/contact" onClick={() => setMenuOpen(false)}>Contact Us</a>
             </nav>
           </div>

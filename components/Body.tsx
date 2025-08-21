@@ -6,14 +6,36 @@ import About1 from './About1';
 import Count from './Count';
 import Brand from './Brand';
 import What from './What';
-import Contact from './Contact';
+import Contact from './Contact'; 
+import { usePathname, useSearchParams } from "next/navigation";
 
 
 
 const Body = () => {
+     const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])
+
+
+
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  }, [pathname, searchParams]);
+
+
+  
 
   return (
 

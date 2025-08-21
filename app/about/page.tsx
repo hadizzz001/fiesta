@@ -1,31 +1,27 @@
 "use client";
 import About1 from "@/components/About1";
-import About2 from "@/components/About2";
-import About3 from "@/components/About3";
+import About from "@/components/About"; 
 
 export default function AboutUsBanner() {
   return (
     <div className="mb-[18em]">
-      <div className="relative w-full h-[400px] overflow-hidden rounded-b-[50px]">
+      <div className="relative w-full h-[400px] overflow-hidden  ">
         {/* Background Image */}
         <img
-          src="https://res.cloudinary.com/dntdrlrse/image/upload/v1754932283/6893c3992efc37104b6347d9_6894d0917370c0ff0cbac10b_chs-about-us-video-720-poster-00001_fr0byh.jpg"
+          src="https://res.cloudinary.com/dx6kwjzog/image/upload/v1755350689/449690394_17960880167782078_2480636519899191385_n_coz64g.jpg"
           alt="About Us Banner"
           className="w-full h-full object-cover"
         />
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <p className="aboutTit">Introduction of us</p>
+          <p className="  mytitle2a">Introduction of us</p>
         </div>
       </div>
 
 
-
-      <About1 />
-      <About2 />
-      <About3 />
-
+<About />
+      <About1 /> 
 
 
 

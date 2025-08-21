@@ -41,7 +41,7 @@ export default function Home() {
       <div className="mt-10">
         <div className="container-xl">
           <br />
-          <h4 className="br_text-2xl-serif md:br_text-3xl-serif" style={{textAlign:"center"}}>GET IN TOUCH</h4>
+          <h4 className="myGray mytitle2" style={{textAlign:"center"}}>GET IN TOUCH</h4>
 
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function Home() {
                   <div className="form-group row">
                     <div className="col-sm-12">
                       <input
-                        className="form-control"
+                        className="form-control myBord"
                         name="firstname"
                         type="text"
                         placeholder="First Name"
@@ -68,7 +68,7 @@ export default function Home() {
                   <div className="form-group row pt-2">
                     <div className="col-sm-12">
                       <input
-                        className="form-control"
+                        className="form-control myBord"
                         name="lastname"
                         type="text"
                         placeholder="Last Name"
@@ -81,7 +81,7 @@ export default function Home() {
                   <div className="form-group row pt-2">
                     <div className="col-sm-12">
                       <input
-                        className="form-control"
+                        className="form-control myBord"
                         name="email"
                         type="email"
                         placeholder="Email"
@@ -93,7 +93,7 @@ export default function Home() {
                   <div className="form-group row pt-2">
                     <div className="col-sm-12">
                       <input
-                        className="form-control"
+                        className="form-control myBord"
                         name="phone"
                         type="text"
                         placeholder="Phone Number"
@@ -108,7 +108,7 @@ export default function Home() {
                   <div className="form-group row">
                     <div className="col-sm-12">
                       <textarea
-                        className="form-control form-control-text-area"
+                        className="form-control form-control-text-area myBord"
                         name="message"
                         placeholder="Message"
                         rows={9}
@@ -124,9 +124,13 @@ export default function Home() {
               <div className="form-group row pt-2">
               <div className="col-md-5"></div>
                 <div className="col-md-2">
-                  <button type="submit" className="klaviyo_submit_button" style={{padding:"1.5em"}}>
-                    Send
-                  </button>
+          <button
+            type="submit"
+            className="w-full py-3 rounded-full font-bold uppercase text-lg"
+            style={{ backgroundColor: "#c12288", color: "#fff" }}
+          >
+            Contact Us Now!
+          </button>
                 </div>
                 <div className="col-md-5"></div>
               </div>

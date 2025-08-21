@@ -1,254 +1,124 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { FaInstagram, FaFacebookF, FaWhatsapp, FaLinkedinIn, FaTiktok } from "react-icons/fa";
-
+import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import Link from 'next/link';
 
 const Footer = () => {
-    const [showPolicies, setShowPolicies] = useState(false);
-    const [showCustomerCare, setShowCustomerCare] = useState(false);
-    const [showServices, setShowServices] = useState(false);
+  const [showPolicies, setShowPolicies] = useState(false);
+  const [showCustomerCare, setShowCustomerCare] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
+  const [products, setProducts] = useState([]);
 
-    return (
-        <footer className="bg-[#ffcceb] text-[#c12288] py-10 px-4">
+  // Fetch products from API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
-            {/* PC FOOTER */}
-            <div className="hidden md:block">
-                {/* Top Row */}
-                <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm border-b border-[#c5c5c5] pb-8 items-center mt-20">
-                    {/* Policies */}
-                    <div className="flex flex-col items-center">
-                        <div className="text-left">
-                            <p className="mb-3 myfp">Policies</p>
-                            <ul className="space-y-2">
-                                <li><a href="/privacy" className="colorp">Privacy Policy</a></li>
-                                <li><a href="/term" className="colorp">Terms of Service</a></li>
-                            </ul>
-                        </div>
-                    </div>
+  return (
+    <footer className="bg-[#ffcceb] text-[#c12288] py-10 px-4">
 
-                    {/* Customer Care */}
-                    <div className="flex flex-col items-center">
-                        <div className="text-left">
-                            <p className="myfp mb-3">Customer Care</p>
-                            <ul className="space-y-2">
-                                <li><a href="/contact" className="colorp">Contact us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Services */}
-                    <div className="flex flex-col items-center">
-                        <div className="text-left">
-                            <p className="myfp mb-3">Services</p>
-                            <ul className="space-y-2">
-                                <li><a href="/services" className="colorp">Services1</a></li>
-                                <li><a href="/ext" className="colorp">Services2</a></li>
-                                <li><a href="/ext" className="colorp">Services3</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
- <div className="flex justify-center gap-6 mt-4">
-      <a
-        href="https://www.instagram.com/fiesta.beverages"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaInstagram />
-      </a>
-      <a
-        href="https://www.facebook.com/profile.php?id=100083229416869"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaFacebookF />
-      </a>
-      <a
-        href="https://wa.me/96171353262"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaWhatsapp />
-      </a>
-      {/* <a
-        href="https://lb.linkedin.com/in/rafi-daham-aa74a492"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaLinkedinIn />
-      </a>
-      <a
-        href="https://www.tiktok.com/@rafidaham_hairdressing"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaTiktok />
-      </a> */}
-    </div>
-
-                {/* Bottom Row */}
-                <div className="text-center mt-20 mb-20">
-                    <p className="myRights">
-                        © fiesta {new Date().getFullYear()} ALL RIGHTS RESERVED
-                    </p>
-                </div>
+      {/* PC FOOTER */}
+      <div className="hidden md:block">
+        <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm border-b border-[#c5c5c5] pb-8 items-start mt-20">
+          
+          {/* Policies */}
+          <div className="flex flex-col items-center">
+            <div className="text-left">
+              <p className="mb-3 myfp">Policies</p>
+              <ul className="space-y-2">
+                <li><Link href="/privacy" className="colorp">Privacy Policy</Link></li>
+                <li><Link href="/term" className="colorp">Terms of Service</Link></li>
+              </ul>
             </div>
+          </div>
 
+          {/* Customer Care */}
+          <div className="flex flex-col items-center">
+            <div className="text-left">
+              <p className="myfp mb-3">Customer Care</p>
+              <ul className="space-y-2">
+                <li><Link href="/contact" className="colorp">Contact Us</Link></li>
+              </ul>
+            </div>
+          </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            {/* MOBILE FOOTER */}
-            <div id='mymobfoot' className="block md:hidden text-sm space-y-6 mt-20 mb-20">
-                {/* Reusable toggle section */}
-                {[
-                    {
-                        label: 'Policies',
-                        isOpen: showPolicies,
-                        setOpen: setShowPolicies,
-                        items: [
-                            { href: '/privacy', text: 'Privacy Policy' },
-                            { href: '/term', text: 'Terms of Service' },
-                        ],
-                    },
-                    {
-                        label: 'Customer Care',
-                        isOpen: showCustomerCare,
-                        setOpen: setShowCustomerCare,
-                        items: [
-                            { href: '/contact', text: 'Contact Us' },
-                        ],
-                    },
-                    {
-                        label: 'Services',
-                        isOpen: showServices,
-                        setOpen: setShowServices,
-                        items: [
-                            { href: '/services', text: 'Services' },
-                            { href: '/ext', text: 'Extensions' },
-                        ],
-                    },
-                ].map(({ label, isOpen, setOpen, items }, index) => (
-                    <div key={index}>
-                        <div
-                            className="flex justify-between items-center cursor-pointer"
-                            onClick={() => setOpen(!isOpen)}
-                        >
-                            <p className="myfp">{label}</p>
-                            <div
-                                className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'
-                                    }`}
-                            >
-                                <FaChevronDown />
-                            </div>
-                        </div>
-                        <div
-                            className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                                }`}
-                        >
-                            <ul className="mt-2 space-y-2 ">
-                                {items.map((item, i) => (
-                                    <li key={i}>
-                                        <a href={item.href} className="colorp">
-                                            {item.text}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <hr id='myhrbar1' className="my-4" />
-                    </div>
+          {/* Our Products */}
+          <div className="flex flex-col items-center">
+            <div className="text-left">
+              <p className="myfp mb-3">Our Products</p>
+              <ul className="space-y-2">
+                {products.map(product => (
+                  <li key={product._id}>
+                    <Link href={`/product?id=${product._id}`} className="colorp">
+                      {product.title}
+                    </Link>
+                  </li>
                 ))}
-
- <div className="flex justify-center gap-6 mt-4">
-      <a
-        href="https://www.instagram.com/fiesta.beverages"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaInstagram />
-      </a>
-      <a
-        href="https://www.facebook.com/profile.php?id=100083229416869"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaFacebookF />
-      </a>
-      <a
-        href="https://wa.me/96171353262"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaWhatsapp />
-      </a>
-      {/* <a
-        href="https://lb.linkedin.com/in/rafi-daham-aa74a492"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaLinkedinIn />
-      </a>
-      <a
-        href="https://www.tiktok.com/@rafidaham_hairdressing"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c12288] hover:text-black text-2xl"
-      >
-        <FaTiktok />
-      </a> */}
-    </div>
-
-              
-
-                <div className="text-center mt-20 mb-20">
-                    <p className="text-sm uppercase">
-                        fiesta {new Date().getFullYear()} ALL RIGHTS RESERVED
-                    </p>
-                </div>
-
+              </ul>
             </div>
+          </div>
+        </div>
 
+        {/* Social Icons */}
+        <div className="flex justify-center gap-6 mt-4">
+          <a href="https://www.instagram.com/fiesta.beverages" target="_blank" rel="noopener noreferrer" className="text-[#c12288] hover:text-black text-2xl"><FaInstagram /></a>
+          <a href="https://www.facebook.com/profile.php?id=100083229416869" target="_blank" rel="noopener noreferrer" className="text-[#c12288] hover:text-black text-2xl"><FaFacebookF /></a>
+          <a href="https://wa.me/96171188020" target="_blank" rel="noopener noreferrer" className="text-[#c12288] hover:text-black text-2xl"><FaWhatsapp /></a>
+        </div>
 
+        {/* Bottom Row */}
+        <div className="text-center mt-20 mb-20">
+          <p className="myRights">© fiesta {new Date().getFullYear()} ALL RIGHTS RESERVED</p>
+        </div>
+      </div>
 
+      {/* MOBILE FOOTER */}
+      <div id='mymobfoot' className="block md:hidden text-sm space-y-6 mt-20 mb-20">
+        {[
+          { label: 'Policies', isOpen: showPolicies, setOpen: setShowPolicies, items: [{ href: '/privacy', text: 'Privacy Policy' }, { href: '/term', text: 'Terms of Service' }] },
+          { label: 'Customer Care', isOpen: showCustomerCare, setOpen: setShowCustomerCare, items: [{ href: '/contact', text: 'Contact Us' }] },
+          { label: 'Our Products', isOpen: showProducts, setOpen: setShowProducts, items: products.map(p => ({ href: `/product?id=${p._id}`, text: p.title })) },
+        ].map(({ label, isOpen, setOpen, items }, index) => (
+          <div key={index}>
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => setOpen(!isOpen)}>
+              <p className="myfp">{label}</p>
+              <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}><FaChevronDown /></div>
+            </div>
+            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+              <ul className="mt-2 space-y-2">
+                {items.map((item, i) => (
+                  <li key={i}>
+                    <Link href={item.href} className="colorp">{item.text}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <hr id='myhrbar1' className="my-4" />
+          </div>
+        ))}
 
+        <div className="flex justify-center gap-6 mt-4">
+          <a href="https://www.instagram.com/fiesta.beverages" target="_blank" rel="noopener noreferrer" className="text-[#c12288] hover:text-black text-2xl"><FaInstagram /></a>
+          <a href="https://www.facebook.com/profile.php?id=100083229416869" target="_blank" rel="noopener noreferrer" className="text-[#c12288] hover:text-black text-2xl"><FaFacebookF /></a>
+          <a href="https://wa.me/96171188020" target="_blank" rel="noopener noreferrer" className="text-[#c12288] hover:text-black text-2xl"><FaWhatsapp /></a>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-        </footer>
-    );
+        <div className="text-center mt-20 mb-20">
+          <p className="text-sm uppercase">fiesta {new Date().getFullYear()} ALL RIGHTS RESERVED</p>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

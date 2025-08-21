@@ -1525,6 +1525,15 @@ body::before {
    font-family: "Barlow Semi Condensed", sans-serif;
    line-height: 1.1;
  }
+ .mytitle2a {
+   font-size: 3rem !important;
+   font-weight: 900 !important;
+   font-style: normal !important;
+   text-transform: uppercase !important;
+   font-family: "Barlow Semi Condensed", sans-serif;
+   line-height: 1.1;
+   color: #fff;
+ }
 
  .mytitle3 {
    font-size: 25px !important;
@@ -2013,4 +2022,10 @@ body::before {
    margin-top: 3em !important;
  }
 
+ }
+
+
+
+ .myBord{
+  border: 1px solid #c12288 !important;
  }
